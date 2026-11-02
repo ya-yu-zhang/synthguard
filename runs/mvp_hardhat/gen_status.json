@@ -1,0 +1,7 @@
+{
+  "profile": "mvp",
+  "gen_profile": "dev_5070",
+  "comfy_url": "http://127.0.0.1:8188",
+  "status": "skipped",
+  "e1_reason": "SKIP_DIFFUSION=1"
+}

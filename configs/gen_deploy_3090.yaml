@@ -1,0 +1,39 @@
+profile: deploy_3090
+backend: comfy
+base_model: flux1-dev
+fallback_sdxl: false
+resolution: 1024
+steps: 28
+guidance: 3.5                # base Flux; control-dev LoRAs use flux_control_guidance
+flux_control_guidance: 10.0
+flux_weight_dtype: default
+sdxl_cfg: 5.5
+img2img_denoise: 0.75         # SDXL proxy keeps the source layout so boxes propagate
+qa_edge_f1_min: 0.25          # edge agreement inside boxes (source vs generated)
+qa_pseudo_match_min: 0.5      # share of propagated boxes the labeler must re-find (Z0-allowed classes)
+qa_global_edge_f1_min: 0.45     # whole-image edge agreement: NOT calibrated for Flux yet; sweep on the 3090 first
+qa_new_instance_conf: 0.5       # an extra confident person (beyond the source) means unlabeled objects
+control: depth
+control_scale: 0.65
+max_images_smoke: 16
+batch: 1
+low_vram: false
+max_frac_of_increment: 0.5
+# multi_gpu: comfy on cuda:0, train on cuda:1 (see docs/deploy_3090.md)
+prompt: "photo of construction workers wearing hard hats at an industrial yard, realistic, natural daylight"
+negative: "cartoon, illustration, watermark, readable text, letters, license plate, logo, signage, deformed"
+weights:
+  flux:
+    unet: flux1-dev.safetensors
+    clip_l: clip_l.safetensors
+    t5: t5xxl_fp16.safetensors
+    vae: ae.safetensors
+    control_lora: flux1-depth-dev-lora.safetensors
+  # Text-to-image scenes for manual labeling (`synthguard scenes`) only. fallback_krea2
+  # stays off here, so Krea 2 never produces E1 on this machine. nvfp4 is a Blackwell
+  # format; on Ampere (3090) Comfy has to dequantize it. If it errors or is slow, put a
+  # Krea 2 Turbo fp8 or bf16 checkpoint in diffusion_models/ and change `unet` below.
+  krea2:
+    unet: krea2_turbo_nvfp4.safetensors
+    text_encoder: qwen3vl_4b_fp8_scaled.safetensors
+    vae: qwen_image_vae.safetensors

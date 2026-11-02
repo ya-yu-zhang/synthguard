@@ -1,0 +1,13 @@
+# Public dataset -> SynthGuard classes. See docs/dataset.md.
+dataset: Voxel51/hard-hat-detection   # archived (v0.1)
+revision: d11e7d6b69ba1a22422db3230c0415d39a699d7c
+# Training classes, in YOLO id order. `head` (bare head, no helmet) is kept only as
+# a mapped auxiliary class (design §2.1); the main table reports person/helmet.
+train_classes: [person, helmet, head]
+eval_classes: [person, helmet]
+map:
+  person: person
+  helmet: helmet
+  head: head
+# Labels we knowingly drop. The source has none today; listing them keeps drops explicit.
+ignore: []

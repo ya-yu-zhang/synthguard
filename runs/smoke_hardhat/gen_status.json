@@ -1,0 +1,17 @@
+{
+  "profile": "smoke",
+  "gen_profile": "dev_5070",
+  "comfy_url": "http://127.0.0.1:8188",
+  "status": "skipped",
+  "e1_reason": "weights missing: flux (flux1-dev-fp8.safetensors, clip_l+t5, ae.safetensors, flux1-canny-dev-lora.safetensors), sdxl proxy (sd_xl_base_1.0.safetensors, controlnet-canny-sdxl-1.0.safetensors)",
+  "comfy": {
+    "comfyui_version": "0.33.1",
+    "pytorch_version": "2.9.1+cu130",
+    "devices": [
+      {
+        "name": "cuda:0 NVIDIA GeForce RTX 5070 : cudaMallocAsync",
+        "vram_total": 12792037376
+      }
+    ]
+  }
+}

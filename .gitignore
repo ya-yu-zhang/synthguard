@@ -1,0 +1,29 @@
+# machine-specific config: never commit
+.env
+
+# environments / caches
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# data and heavy artifacts
+data/
+*.pt
+*.safetensors
+*.onnx
+
+# runs: keep human-readable summaries, drop weights and ultralytics clutter
+runs/**/weights/
+runs/train/
+runs/detect/
+runs/**/*.jpg
+runs/**/*.png
+!runs/**/*.md
+
+# ultralytics working dirs and raw logs carry absolute paths
+runs/**/train/
+runs/**/*log*.txt
+
+# web UI sources live in web/; only the build in src/synthguard/ui_static is shipped
+web/node_modules/

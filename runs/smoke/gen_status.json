@@ -1,0 +1,42 @@
+{
+  "profile": "smoke",
+  "gen_profile": "dev_5070",
+  "comfy_url": "http://127.0.0.1:8188",
+  "status": "ok",
+  "generator": "krea2_img2img_dev_proxy",
+  "why": "flux weights missing (flux1-dev-fp8.safetensors, clip_l+t5, ae.safetensors, flux1-canny-dev-lora.safetensors); using Krea 2 img2img proxy (no control net)",
+  "generated": 16,
+  "accepted": 9,
+  "failed_checks": {
+    "edge_ok": 0,
+    "global_ok": 0,
+    "pseudo_ok": 2,
+    "no_new_ok": 5
+  },
+  "settings": {
+    "krea2_steps": 8,
+    "krea2_denoise": 0.25,
+    "resolution": 768,
+    "steps": 22,
+    "qa_edge_f1_min": 0.6,
+    "qa_pseudo_match_min": 0.5,
+    "qa_global_edge_f1_min": 0.75,
+    "qa_new_instance_conf": 0.5
+  },
+  "errors": [],
+  "seconds": 102.2,
+  "comfy": {
+    "comfyui_version": "0.33.1",
+    "pytorch_version": "2.9.1+cu130",
+    "devices": [
+      {
+        "name": "cuda:0 NVIDIA GeForce RTX 5070 : cudaMallocAsync",
+        "vram_total": 12792037376
+      }
+    ]
+  },
+  "qa_pseudo_classes": [
+    "person"
+  ],
+  "e1_reason": "16 conditional images (9 accepted) with krea2_img2img_dev_proxy; E1 with the target generator (FLUX.1-dev) is planned on the 3090"
+}

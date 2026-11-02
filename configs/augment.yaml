@@ -1,0 +1,18 @@
+# Classic augmentation (albumentations). Probabilities are per op; boxes are
+# propagated by the library. Kept deliberately mild (risk register: over-strong aug).
+min_visibility: 0.4
+weather:
+  rain_p: 0.15
+  fog_p: 0.15
+  brightness_contrast_p: 0.5
+  iso_noise_p: 0.3
+imaging:
+  motion_blur_p: 0.25
+  jpeg_p: 0.3
+  shadow_p: 0.2
+occlusion:
+  blocks_p: 0.25
+  lines_p: 0.2
+geometry:
+  hflip_p: 0.5
+  affine_p: 0.5

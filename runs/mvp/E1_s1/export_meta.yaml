@@ -1,0 +1,22 @@
+experiment: E1
+train_images: 2148
+val_images: 300
+train_sources:
+  real: 906
+  augment: 453
+  paste: 427
+  diffusion: 362
+qa:
+  augment:
+    dropped_boxes: {}
+    images_without_boxes: 0
+    images: 453
+  paste:
+    dropped_boxes:
+      too_small: 1
+    images_without_boxes: 0
+    images: 427
+  diffusion:
+    dropped_boxes: {}
+    images_without_boxes: 0
+    images: 362

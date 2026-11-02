@@ -1,0 +1,6 @@
+experiment: E0
+train_images: 300
+val_images: 300
+train_sources:
+  real: 300
+qa: {}

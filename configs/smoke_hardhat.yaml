@@ -1,0 +1,21 @@
+# [archived v0.1, hard-hat-detection] Smoke profile: small, fast, complete loop.
+name: smoke_hardhat
+dataset: hardhat
+seed_take: 300        # first N ids of configs/train_seed_list.txt
+val_take: 300         # first N ids of configs/val_list.txt
+increment:            # E2 adds as many images as the seed has, split between:
+  augment_frac: 0.5
+  paste_frac: 0.5
+paste:
+  max_instances_per_image: 3
+  class_weights: {person: 3.0, helmet: 1.0, head: 1.0}  # rare classes pasted more
+train:
+  model: yolo11n.pt
+  epochs: 30
+  imgsz: 416
+  batch: 16
+  workers: 2
+  seeds: [0, 1]
+quota:                # incremental valid boxes required (design §5.3)
+  person: 50
+  helmet: 50

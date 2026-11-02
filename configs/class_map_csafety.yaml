@@ -1,0 +1,11 @@
+# construction-safety -> SynthGuard classes. See docs/dataset.md.
+dataset: Francesco/construction-safety-gsnvb
+train_classes: [person, helmet, head]
+eval_classes: [person, helmet]
+map:
+  person: person
+  helmet: helmet
+  no-helmet: head      # a bare head; kept as auxiliary class, not in the main table
+# PPE labels outside the MVP scope, dropped on purpose. `construction-safety` is the
+# Roboflow super-category and carries no boxes.
+ignore: [vest, no-vest, construction-safety]

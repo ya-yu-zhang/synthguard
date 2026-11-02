@@ -1,0 +1,13 @@
+# Archived first dataset (v0.1 runs: runs/smoke_hardhat, runs/mvp_hardhat).
+name: hardhat
+title: hard-hat-detection (FiftyOne export of Hard Hat Workers)
+hub_id: Voxel51/hard-hat-detection
+revision: d11e7d6b69ba1a22422db3230c0415d39a699d7c
+license: CC0-1.0 (dataset card)
+format: fiftyone
+index_file: samples.json
+index_sha256: da9777e7dfede3906cd51a81b6520bc284e05335c39d5e2e82f7223f3be624e3
+class_map: class_map_hardhat.yaml
+val_list: splits/hardhat/val_list.txt
+seed_list: splits/hardhat/train_seed_list.txt
+checksums: splits/hardhat/checksums_sample.txt

@@ -1,0 +1,22 @@
+# Full MVP profile on the main dataset. construction-safety has 1206 images, so the
+# design's 1000 + 1000 is not reachable: all 906 seed images, the frozen 300 val.
+name: mvp
+dataset: csafety
+seed_take: 906
+val_take: 300
+increment:
+  augment_frac: 0.5
+  paste_frac: 0.5
+paste:
+  max_instances_per_image: 3
+  class_weights: {person: 1.0, helmet: 1.0, head: 1.0}
+train:
+  model: yolo11n.pt
+  epochs: 60
+  imgsz: 640
+  batch: 16
+  workers: 2
+  seeds: [0, 1]
+quota:
+  person: 500
+  helmet: 500

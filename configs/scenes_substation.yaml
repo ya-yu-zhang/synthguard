@@ -1,0 +1,136 @@
+# Text-to-image scene batches for MANUAL labeling (no automatic boxes).
+# Each prompt combines one setting, one viewpoint, one condition and 2-4 target
+# elements, so the batch covers every class while staying varied.
+# Neutral wording only: no real company, station or brand names.
+name: substation
+title: 变电站作业场景
+description: 室外变电站、近电作业；15 类目标，人工标注用
+generator: krea2_t2i
+steps: 8
+sizes: [[1024, 1024], [1216, 832], [832, 1216]]   # WxH, multiples of 64
+
+# Annotation classes, in YOLO id order (classes.txt is written next to the images).
+classes:
+  - person            # 人
+  - head              # 人头
+  - helmet            # 安全帽
+  - uniform           # 工作服
+  - safety_harness    # 安全带
+  - safety_fence      # 安全围栏/栅栏
+  - hanging_basket    # 吊篮
+  - hook              # 吊钩
+  - mechanical_arm    # 机械臂
+  - insulator         # 绝缘子
+  - grading_ring      # 均压环
+  - porcelain_bushing # 外瓷套
+  - fire              # 明火
+  - smoke             # 抽烟/吸烟行为
+  - fumes             # 烟雾
+
+settings:
+  - an outdoor high-voltage electrical substation yard with steel gantry structures and overhead busbars
+  - a 220 kV outdoor substation with rows of disconnect switches and current transformers
+  - a substation switchyard next to large power transformers with radiators
+  - a 500 kV substation with tall equipment supports and long insulator strings
+  - a gravel-covered substation bay between transformer and circuit breaker columns
+
+viewpoints:
+  - wide shot from a fixed surveillance camera mounted high on a pole, looking down
+  - medium shot at eye level, handheld camera
+  - wide angle shot from ground level looking up at the equipment
+  - telephoto shot from across the yard
+
+conditions:
+  - overcast daylight
+  - bright midday sun with hard shadows
+  - early morning soft light
+  - light rain, wet ground
+  - late afternoon warm light
+  - hazy air
+
+# Each element: the phrase inserted into the prompt and the classes it is meant to show.
+elements:
+  workers_helmets:
+    text: two maintenance workers in blue work uniforms and white safety helmets
+    shows: [person, head, helmet, uniform]
+  worker_harness:
+    text: a worker wearing a full-body safety harness with a lanyard, standing on a metal ladder
+    shows: [person, head, helmet, uniform, safety_harness]
+  bucket_truck:
+    text: an aerial work platform with a hanging basket raised toward the equipment, one worker inside the basket
+    shows: [hanging_basket, person, helmet, uniform]
+  crane_hook:
+    text: a mobile crane with its hook and lifting slings hanging near the gantry
+    shows: [hook]
+  robot_arm:
+    text: a live-line maintenance robot with an articulated mechanical arm extended toward a conductor
+    shows: [mechanical_arm]
+  insulators:
+    text: porcelain and composite insulator strings hanging from the steel structure
+    shows: [insulator]
+  grading_rings:
+    text: large metal grading rings around the top of the insulator columns
+    shows: [grading_ring, insulator]
+  bushings:
+    text: tall ribbed porcelain bushings on top of a power transformer
+    shows: [porcelain_bushing]
+  fence:
+    text: a temporary red and white safety fence with warning barriers around the work area
+    shows: [safety_fence]
+  open_fire:
+    text: a small open fire burning on the ground near the equipment
+    shows: [fire]
+  smoking:
+    text: a worker without a helmet smoking a cigarette, holding it near the mouth
+    shows: [person, head, smoke, uniform]
+  fumes:
+    text: grey smoke fumes drifting across the yard
+    shows: [fumes]
+
+# How many elements per prompt, and how often each element is drawn (relative weight).
+elements_per_image: [2, 4]
+# Display names for the web UI (YOLO ids above stay English).
+class_labels:
+  person: 人
+  head: 人头
+  helmet: 安全帽
+  uniform: 工作服
+  safety_harness: 安全带
+  safety_fence: 安全围栏
+  hanging_basket: 吊篮
+  hook: 吊钩
+  mechanical_arm: 机械臂
+  insulator: 绝缘子
+  grading_ring: 均压环
+  porcelain_bushing: 外瓷套
+  fire: 明火
+  smoke: 吸烟
+  fumes: 烟雾
+element_labels:
+  workers_helmets: 戴安全帽的工人
+  worker_harness: 系安全带登高
+  bucket_truck: 高空作业吊篮
+  crane_hook: 吊车吊钩
+  robot_arm: 带电作业机械臂
+  insulators: 绝缘子串
+  grading_rings: 均压环
+  bushings: 变压器瓷套
+  fence: 临时安全围栏
+  open_fire: 地面明火
+  smoking: 未戴帽吸烟
+  fumes: 弥漫烟雾
+weights:
+  workers_helmets: 3
+  worker_harness: 2
+  bucket_truck: 2
+  crane_hook: 2
+  robot_arm: 1
+  insulators: 2
+  grading_rings: 2
+  bushings: 2
+  fence: 2
+  open_fire: 1
+  smoking: 1
+  fumes: 1
+
+style: realistic photograph, natural colors, sharp focus, documentary style, no text, no logos, no watermark

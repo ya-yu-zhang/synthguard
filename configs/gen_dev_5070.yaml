@@ -1,0 +1,42 @@
+profile: dev_5070
+backend: comfy
+base_model: flux1-dev        # target stack; if weights are absent/OOM use the proxy
+fallback_sdxl: true          # Dev-only stand-in, reported as generator=sdxl_dev_proxy
+fallback_krea2: true         # Dev-only stand-in without control net: generator=krea2_img2img_dev_proxy
+krea2_steps: 8               # Krea 2 Turbo is distilled for ~8 steps, cfg 1
+krea2_denoise: 0.25          # img2img strength. Sweep 0.20-0.45 (runs/smoke/gen_sweep.md): from 0.30 the
+                             # model starts adding unlabeled people, at 0.45 it rewrites the scene
+resolution: 768
+steps: 22
+guidance: 3.5                # base Flux; control-dev LoRAs use flux_control_guidance
+flux_control_guidance: 10.0
+flux_weight_dtype: fp8_e4m3fn
+sdxl_cfg: 5.5
+img2img_denoise: 0.75         # SDXL proxy keeps the source layout so boxes propagate
+qa_edge_f1_min: 0.60          # edge agreement inside boxes (source vs generated); calibrated on Krea 2
+qa_pseudo_match_min: 0.5      # share of propagated boxes the labeler must re-find (Z0-allowed classes)
+qa_global_edge_f1_min: 0.75     # whole-image edge agreement: rejects rewritten scenes (0.45 never fired)
+qa_new_instance_conf: 0.5       # an extra confident person (beyond the source) means unlabeled objects
+control: canny               # or depth
+control_scale: 0.6
+max_images_smoke: 16
+batch: 1
+low_vram: true
+max_frac_of_increment: 0.5   # design §4.1 upper bound for diffusion share
+prompt: "photo of construction workers wearing hard hats at an industrial yard, realistic, natural daylight"
+negative: "cartoon, illustration, watermark, readable text, letters, license plate, logo, signage, deformed"
+# Weight file names (relative to COMFY_ROOT/ComfyUI/models/*). Recorded in REPRO.md.
+weights:
+  flux:
+    unet: flux1-dev-fp8.safetensors
+    clip_l: clip_l.safetensors
+    t5: t5xxl_fp8_e4m3fn.safetensors
+    vae: ae.safetensors
+    control_lora: flux1-canny-dev-lora.safetensors
+  sdxl:
+    ckpt: sd_xl_base_1.0.safetensors
+    controlnet: controlnet-canny-sdxl-1.0.safetensors
+  krea2:
+    unet: krea2_turbo_nvfp4.safetensors       # diffusion_models/
+    text_encoder: qwen3vl_4b_fp8_scaled.safetensors   # text_encoders/
+    vae: qwen_image_vae.safetensors           # vae/

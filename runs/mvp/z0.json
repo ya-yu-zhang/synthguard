@@ -1,0 +1,25 @@
+{
+  "status": "failed",
+  "error": "ModuleNotFoundError: No module named 'clip'",
+  "model": "yolov8s-worldv2.pt",
+  "threshold": 0.5,
+  "allowed_classes": [
+    "person"
+  ],
+  "labeler": "coco_fallback",
+  "fallback": {
+    "status": "ok",
+    "model": "yolo11n.pt",
+    "classes": [
+      "person"
+    ],
+    "per_class": {
+      "person": {
+        "ap50": 0.92511827782988,
+        "n_gt": 678,
+        "n_det": 1258,
+        "max_recall": 0.967551622418879
+      }
+    }
+  }
+}

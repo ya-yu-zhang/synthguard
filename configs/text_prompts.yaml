@@ -1,0 +1,14 @@
+# Open-vocabulary prompts for the pseudo-labeler (Z0 gate and diffusion QA).
+# Keys are SynthGuard classes; values are prompt lists merged into one class.
+model: yolov8s-worldv2.pt
+prompts:
+  person: [a person, a construction worker]
+  helmet: [a hard hat, a safety helmet]
+  head: [a human head without a hat]
+conf: 0.05
+# Z0: a class may be pseudo-labeled only if its AP50 on the real val split reaches this.
+min_ap50_for_pseudo: 0.50
+# If the open-vocabulary model cannot run (e.g. CLIP missing), Z0 still measures the
+# closed-set COCO model we fine-tune from, on the classes COCO actually has.
+fallback_model: yolo11n.pt
+fallback_coco_ids: {person: 0}

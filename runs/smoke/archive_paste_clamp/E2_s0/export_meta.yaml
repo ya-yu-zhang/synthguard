@@ -1,0 +1,16 @@
+experiment: E2
+train_images: 586
+val_images: 300
+train_sources:
+  real: 300
+  augment: 150
+  paste: 136
+qa:
+  augment:
+    dropped_boxes: {}
+    images_without_boxes: 0
+    images: 150
+  paste:
+    dropped_boxes: {}
+    images_without_boxes: 0
+    images: 136

@@ -1,0 +1,18 @@
+# Main dataset: dense person + helmet boxes.
+name: csafety
+title: construction-safety (Roboflow 100 benchmark, "construction safety - v1 release-640")
+hub_id: Francesco/construction-safety-gsnvb
+revision: cd92c83884cc7c0ba1a3fda584784f550321e16f
+license: CC BY 4.0 (Roboflow 100; HF card tag "license:cc")
+format: hf_parquet
+files:
+  data/train-00000-of-00001-363ce03539eb0073.parquet: f1c9f24c5326748c8a54b32e0d9c1300097d57be196eaf641b950bb7db532023
+  data/validation-00000-of-00001-fc7c3e3c4e5acfa5.parquet: 374f5079c8825bca67fbea0ff80b74c59e1df04afc04b6f54f4afbe8e258a85a
+  data/test-00000-of-00001-2a010722bb743ffa.parquet: 1b0e77047a7559cf5e8d5482b4ffa57f7385c9a12bc67f57e737e2eef93421df
+# category index -> source label (from the parquet ClassLabel feature)
+labels: [construction-safety, helmet, no-helmet, no-vest, person, vest]
+class_map: class_map_csafety.yaml
+val_list: splits/csafety/val_list.txt
+seed_list: splits/csafety/train_seed_list.txt
+checksums: splits/csafety/checksums_sample.txt
+split_sizes: {val: 300, seed: 906}

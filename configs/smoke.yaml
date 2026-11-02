@@ -1,0 +1,21 @@
+# Smoke profile: small, fast, complete loop on the main dataset.
+name: smoke
+dataset: csafety
+seed_take: 300        # first N ids of the dataset's train_seed_list
+val_take: 300         # the whole frozen val list
+increment:            # E2 adds as many images as the seed has, split between:
+  augment_frac: 0.5
+  paste_frac: 0.5
+paste:
+  max_instances_per_image: 3
+  class_weights: {person: 1.0, helmet: 1.0, head: 1.0}  # person is not rare here
+train:
+  model: yolo11n.pt
+  epochs: 30
+  imgsz: 640          # source images are 640x640
+  batch: 16
+  workers: 2
+  seeds: [0, 1]
+quota:                # incremental valid boxes required (design §5.3)
+  person: 50
+  helmet: 50

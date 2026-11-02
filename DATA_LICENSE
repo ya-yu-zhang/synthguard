@@ -1,0 +1,35 @@
+Data terms for SynthGuard
+
+1. Source images and labels
+   a) Main dataset: "construction safety" from the Roboflow 100 benchmark
+      (Roboflow Universe, exported 2023-01-27, "v1 release-640"), mirrored on the
+      Hugging Face Hub as Francesco/construction-safety-gsnvb
+      (revision cd92c83884cc7c0ba1a3fda584784f550321e16f).
+      License: Creative Commons Attribution 4.0 International (CC BY 4.0),
+      https://creativecommons.org/licenses/by/4.0/ . Attribution: Roboflow 100 /
+      Roboflow Universe contributors. Changes made by SynthGuard: labels remapped
+      (no-helmet -> head; vest classes dropped), derived images produced as below.
+   b) Archived dataset (v0.1 runs): Voxel51/hard-hat-detection
+      (revision d11e7d6b69ba1a22422db3230c0415d39a699d7c), declared CC0-1.0.
+   SynthGuard does not redistribute either dataset; `synthguard download` fetches them.
+
+2. Derived images (classic augmentation, copy-paste)
+   Inherit the terms of their source images: CC BY 4.0 with attribution for the main
+   dataset, CC0-1.0 for the archived one.
+
+3. Diffusion images (optional)
+   Contain synthetic persons; no real identity is intentionally depicted.
+   When generated with FLUX.1-dev or its control LoRAs, they are subject to the
+   FLUX.1 [dev] Non-Commercial License: do not sell or package them as a commercial
+   dataset. The SDXL dev proxy (SDXL base 1.0, CreativeML Open RAIL++-M) is used only
+   to test the pipeline on the development machine.
+   When generated with Krea 2 Turbo (the img2img stand-in for E1 and the text-to-image
+   scene batches), they are subject to that model's own license, which this project
+   has not reviewed. Check it before using such images beyond evaluation.
+   None of these weights or generated images are distributed with SynthGuard.
+
+4. assets/examples/
+   At most 20 triptychs built from main-dataset images (CC BY 4.0, attribution
+   above) and SynthGuard outputs.
+
+The code license (Apache-2.0, see LICENSE) does not change any of the above.

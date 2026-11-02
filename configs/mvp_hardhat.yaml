@@ -1,0 +1,21 @@
+# [archived v0.1, hard-hat-detection] Full MVP profile.
+name: mvp_hardhat
+dataset: hardhat
+seed_take: 1000
+val_take: 1000
+increment:
+  augment_frac: 0.5
+  paste_frac: 0.5
+paste:
+  max_instances_per_image: 3
+  class_weights: {person: 3.0, helmet: 1.0, head: 1.0}
+train:
+  model: yolo11n.pt
+  epochs: 60
+  imgsz: 416
+  batch: 16
+  workers: 2
+  seeds: [0, 1]
+quota:
+  person: 500
+  helmet: 500

@@ -1,0 +1,8 @@
+# Normalize text to LF in the repository; keep each script's native line endings on checkout.
+* text=auto
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.sh text eol=lf
+*.jpg binary
+*.png binary
+*.woff2 binary

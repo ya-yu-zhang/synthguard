@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthguard"
+version = "0.1.0"
+description = "A small, opinionated factory for safety-helmet detection data with honest comparisons."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = [
+  "ultralytics>=8.3",
+  "albumentations>=2.0,<3",
+  "opencv-python-headless>=4.9",
+  "numpy",
+  "pydantic-settings>=2.0",
+  "pyyaml",
+  "requests",
+  "huggingface_hub>=0.23",
+  "pyarrow",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+synthguard = "synthguard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+synthguard = ["ui_static/*", "ui_static/assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
